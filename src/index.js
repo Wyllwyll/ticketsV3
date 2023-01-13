@@ -40,8 +40,13 @@ app.use('/api/tickets', ticketsRouter);
 app.use('/api/users', usersRouter);
 
 app.all('*', function (req, res) {
-    res.status(404).end("not found");
-});
+    res.status(404).json(
+        {
+            status: "FAIL",
+            message: "Nécessite un nombre valable en tant qu'Id"
+        });
+}
+);
 
 
 // ecoute le port 8000
